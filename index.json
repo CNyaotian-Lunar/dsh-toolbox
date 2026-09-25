@@ -1,0 +1,369 @@
+{
+ "generatedAt": "2026-09-25T08:25:38.855Z",
+ "count": 40,
+ "tools": [
+  {
+   "path": "build-index.mjs",
+   "group": "tools",
+   "desc": "工具箱「索引生成器」：扫描 dsh-toolbox 下所有脚本，抽出顶部注释里的「干什么 / 用法」，",
+   "usage": "node build-index.mjs",
+   "tags": [
+    "标签1",
+    "标签2`（不写就按目录归类）"
+   ],
+   "sizeKB": 5,
+   "mtime": "2026-09-25"
+  },
+  {
+   "path": "memory/analyze.mjs",
+   "group": "memory",
+   "desc": "记忆库体检：层分布 / 注入成本 / 重复簇 / 超长 / 关键词缺失 / 访问记录 / 时间分布。",
+   "usage": "node analyze.mjs [memory.db]",
+   "tags": [],
+   "sizeKB": 8,
+   "mtime": "2026-09-25"
+  },
+  {
+   "path": "memory/apply-archive.mjs",
+   "group": "memory",
+   "desc": "批量归档器：把一批 lesson id 标 archived（只改 status，不删数据），可 dry-run、可回滚。",
+   "usage": "node apply-archive.mjs --file <ids.txt> [--apply]",
+   "tags": [],
+   "sizeKB": 6,
+   "mtime": "2026-09-25"
+  },
+  {
+   "path": "memory/apply-compress.mjs",
+   "group": "memory",
+   "desc": "压缩落地器（**任意层**）：把子代理产出的 JSON（[{short,id,oldLen,newLen,newContent}]）批量写进记忆库。",
+   "usage": "node apply-compress.mjs <json...> [--table fact] [--from active] [--minLen 150] [--apply]",
+   "tags": [],
+   "sizeKB": 5,
+   "mtime": "2026-09-25"
+  },
+  {
+   "path": "memory/apply-merge.mjs",
+   "group": "memory",
+   "desc": "合并落地器：把一个簇的成员合并进【主条】——改写主条正文（+可选 keywords/project/importance），",
+   "usage": "node apply-merge.mjs <json...> [--table fact] [--from active] [--allowGrow] [--apply]",
+   "tags": [],
+   "sizeKB": 7,
+   "mtime": "2026-09-25"
+  },
+  {
+   "path": "memory/archive-user-old.mjs",
+   "group": "memory",
+   "desc": "B1 收口：把 user 层「已被 12 条主题条吸收」的旧条目归档（只改 status，不删数据）。",
+   "usage": "node archive-user-old.mjs [--apply]",
+   "tags": [],
+   "sizeKB": 3,
+   "mtime": "2026-09-25"
+  },
+  {
+   "path": "memory/backup-db.mjs",
+   "group": "memory",
+   "desc": "记忆库一致性备份（VACUUM INTO：包含 WAL 里未落盘的数据，源库不改数据）。",
+   "usage": "node backup-db.mjs <源 memory.db> <目标文件>  —— 目标必须不存在",
+   "tags": [],
+   "sizeKB": 1,
+   "mtime": "2026-09-22"
+  },
+  {
+   "path": "memory/compare-before-after.mjs",
+   "group": "memory",
+   "desc": "整理前后体检对比：读「整理前备份库」与「当前活库」，逐层对比条数 / 字符 / 估算 token。",
+   "usage": "node compare-before-after.mjs [备份库] [当前库]",
+   "tags": [],
+   "sizeKB": 5,
+   "mtime": "2026-09-25"
+  },
+  {
+   "path": "memory/export-from-backup.mjs",
+   "group": "memory",
+   "desc": "从备份库导出某层全文到 md（用于补齐\"整理前\"快照）。",
+   "usage": "node export-from-backup.mjs <备份db> <层名> <输出md> [--all-status]",
+   "tags": [],
+   "sizeKB": 1,
+   "mtime": "2026-09-22"
+  },
+  {
+   "path": "memory/export-layer.mjs",
+   "group": "memory",
+   "desc": "导出某一层（或全部）记忆为 Markdown 清单，便于逐条判决（保留 / 搬家 / 合并 / 归档）。",
+   "usage": "node export-layer.mjs <层名|all> [输出 md]",
+   "tags": [],
+   "sizeKB": 2,
+   "mtime": "2026-09-25"
+  },
+  {
+   "path": "memory/filter-merge-json.mjs",
+   "group": "memory",
+   "desc": "按 cluster 名过滤 merge JSON（主 agent 用）：剔掉某些簇后另存。",
+   "usage": "node filter-merge-json.mjs <in.json> <out.json> --exclude \"C1,C2\"",
+   "tags": [],
+   "sizeKB": 1,
+   "mtime": "2026-09-25"
+  },
+  {
+   "path": "memory/gen-browser.mjs",
+   "group": "memory",
+   "desc": "只读导出记忆库 → 单文件深色浏览页（无依赖、可离线双击打开）。",
+   "usage": "node gen-browser.mjs [memory.db 路径] [输出 html 路径]",
+   "tags": [],
+   "sizeKB": 13,
+   "mtime": "2026-09-25"
+  },
+  {
+   "path": "memory/list-lite.mjs",
+   "group": "memory",
+   "desc": "列出某层 active 条目的紧凑概览（id / project / 重要性 / 长度 / 首 60 字）。",
+   "usage": "node list-lite.mjs <层名>",
+   "tags": [],
+   "sizeKB": 1,
+   "mtime": "2026-09-25"
+  },
+  {
+   "path": "memory/list-user.mjs",
+   "group": "memory",
+   "desc": "B1 判决辅助：列出 user 层全部 active 条目（id + 长度 + 主题指纹），供逐条判决。",
+   "usage": "node list-user.mjs [过滤正则]",
+   "tags": [],
+   "sizeKB": 1,
+   "mtime": "2026-09-25"
+  },
+  {
+   "path": "memory/mem-archive.mjs",
+   "group": "memory",
+   "desc": "多表通用归档器：把一批 id 标 archived（只改 status，不删数据），可 dry-run、可回滚。",
+   "usage": "node mem-archive.mjs --table fact --ids <id1,id2,...> [--apply]",
+   "tags": [],
+   "sizeKB": 6,
+   "mtime": "2026-09-25"
+  },
+  {
+   "path": "memory/mem-cut.mjs",
+   "group": "memory",
+   "desc": "判据裁剪器：按可解释的判据批量归档条目（只改 status，不删数据），可 dry-run、可回滚。",
+   "usage": "node mem-cut.mjs --table lesson --rule <判据> [--limit N] [--olderThanDays D] [--apply]",
+   "tags": [],
+   "sizeKB": 4,
+   "mtime": "2026-09-25"
+  },
+  {
+   "path": "memory/mem-dist.mjs",
+   "group": "memory",
+   "desc": "记忆库「分布统计」：按层看 importance / 长度 / 是否被检索命中过 / 项目 的分布，",
+   "usage": "node mem-dist.mjs [层名]",
+   "tags": [],
+   "sizeKB": 3,
+   "mtime": "2026-09-25"
+  },
+  {
+   "path": "memory/memory-stats.mjs",
+   "group": "memory",
+   "desc": "只读清点记忆库：表结构 / 各层条数与状态分布 / project 子类 / 最近更新。",
+   "usage": "node memory-stats.mjs [memory.db 路径]",
+   "tags": [],
+   "sizeKB": 3,
+   "mtime": "2026-09-25"
+  },
+  {
+   "path": "memory/merge-keywords.mjs",
+   "group": "memory",
+   "desc": "合并产物的「关键词并集补强」：把被归档成员的关键词**补回主条**，避免合并后搜不到。",
+   "usage": "node merge-keywords.mjs <merge-*.json> [--table fact] [--max 16] [--apply]",
+   "tags": [],
+   "sizeKB": 5,
+   "mtime": "2026-09-25"
+  },
+  {
+   "path": "memory/normalize-members.mjs",
+   "group": "memory",
+   "desc": "merge JSON 规范化器：把 `members` 从**对象数组**（子代理常用 `[{id,short,oldLen,action}]`）",
+   "usage": "node normalize-members.mjs <in.json> <out.json>",
+   "tags": [],
+   "sizeKB": 2,
+   "mtime": "2026-09-22"
+  },
+  {
+   "path": "memory/restore-compress.mjs",
+   "group": "memory",
+   "desc": "压缩还原器：读 apply-compress.mjs 落下的 undo JSON，把 content 还原回压缩前。",
+   "usage": "node restore-compress.mjs <undo-compress-*.json> [--table fact] [--apply]",
+   "tags": [],
+   "sizeKB": 3,
+   "mtime": "2026-09-25"
+  },
+  {
+   "path": "memory/restore-merge.mjs",
+   "group": "memory",
+   "desc": "合并还原器：读 apply-merge.mjs 落下的 `undo-merge-<表>-<时间戳>.json`，一键还原整批：",
+   "usage": "node restore-merge.mjs <undo-merge-*.json> [--table fact] [--apply]",
+   "tags": [],
+   "sizeKB": 4,
+   "mtime": "2026-09-25"
+  },
+  {
+   "path": "memory/stats-buckets.mjs",
+   "group": "memory",
+   "desc": "各层「长度分布桶」统计：用于收尾报告（超长条目还剩多少）。只读。",
+   "usage": "node stats-buckets.mjs [db路径]",
+   "tags": [],
+   "sizeKB": 2,
+   "mtime": "2026-09-25"
+  },
+  {
+   "path": "memory/token-account.mjs",
+   "group": "memory",
+   "desc": "「每轮固定注入」总账：把 **AGENTS.md 瘦身前 ↔ 现在** 与 **记忆库整理前 ↔ 现在** 放在一起算 token。",
+   "usage": "node token-account.mjs [--agents-before <旧版 AGENTS.md>] [--db-before <旧备份库>]",
+   "tags": [],
+   "sizeKB": 8,
+   "mtime": "2026-09-25"
+  },
+  {
+   "path": "memory/verify-compress-json.mjs",
+   "group": "memory",
+   "desc": "压缩产物独立验真（任意层，主 agent 用，**不信子代理自检**）：",
+   "usage": "node verify-compress-json.mjs <json...> [--table topic] [--dump C1,C2]",
+   "tags": [],
+   "sizeKB": 5,
+   "mtime": "2026-09-25"
+  },
+  {
+   "path": "memory/verify-merge-json.mjs",
+   "group": "memory",
+   "desc": "合并产物独立验真（主 agent 专用，**不信子代理自检**）：",
+   "usage": "node verify-merge-json.mjs <json> [--table fact] [--dump C1,C2]",
+   "tags": [],
+   "sizeKB": 4,
+   "mtime": "2026-09-25"
+  },
+  {
+   "path": "render/check-svg.mjs",
+   "group": "render",
+   "desc": "// check-svg.mjs —— 校验导出的静态 SVG：自包含性 / XML 良构性 / UTF-8 / 中文标签 / 与线上产物一致性",
+   "usage": "node check-svg.mjs <map.html> <spider.svg> <force.svg>",
+   "tags": [],
+   "sizeKB": 5,
+   "mtime": "2026-09-22"
+  },
+  {
+   "path": "render/compose-grid.mjs",
+   "group": "render",
+   "desc": "// compose-grid.mjs —— 把多张 SVG / PNG 按网格拼成一张对比图（**无浏览器**，用工作区现成的 sharp/librsvg）。",
+   "usage": "node compose-grid.mjs <out.png> <cols> <cellWidth> <in1> <in2> ...",
+   "tags": [],
+   "sizeKB": 4,
+   "mtime": "2026-09-25"
+  },
+  {
+   "path": "render/svg2png.mjs",
+   "group": "render",
+   "desc": "// svg2png.mjs —— 用工作区现成的 sharp(librsvg) 把静态 SVG 转 PNG（无浏览器）",
+   "usage": "node svg2png.mjs <in.svg> <out.png> [density，默认 144 = 2x]",
+   "tags": [],
+   "sizeKB": 2,
+   "mtime": "2026-09-25"
+  },
+  {
+   "path": "session/_repro-inbound.mjs",
+   "group": "session",
+   "desc": "反事实对照：真实会话 → chat 快照 → 折叠组。",
+   "usage": "node repro-inbound.mjs --fold-src <目录> [会话id子串...]   （不给会话 id = 扫全库）",
+   "tags": [],
+   "sizeKB": 10,
+   "mtime": "2026-09-25"
+  },
+  {
+   "path": "session/dump-session.mjs",
+   "group": "session",
+   "desc": "// 只读勘察：dsh 会话 jsonl.zstd 是多帧拼接，逐帧解压后按关键词切片打印。",
+   "usage": "node dump-session.mjs <session.vN.jsonl.zstd> <关键词> [前后行数] [每行截断]",
+   "tags": [],
+   "sizeKB": 2,
+   "mtime": "2026-09-25"
+  },
+  {
+   "path": "session/dump-turn.mjs",
+   "group": "session",
+   "desc": "打印指定会话指定 turn 的节点序列（判断折叠范围与 memory_* 调用分布）。",
+   "usage": "",
+   "tags": [],
+   "sizeKB": 3,
+   "mtime": "2026-09-25"
+  },
+  {
+   "path": "session/list-sessions.mjs",
+   "group": "session",
+   "desc": "列出全库会话：id + 标题 + 末条用户消息摘要（用于定位某段提问对应的会话）。",
+   "usage": "",
+   "tags": [],
+   "sizeKB": 3,
+   "mtime": "2026-09-25"
+  },
+  {
+   "path": "session/repro-inbound.mjs",
+   "group": "session",
+   "desc": "反事实对照：真实会话 → chat 快照 → 折叠组。",
+   "usage": "node repro-inbound.mjs --fold-src <目录> [会话id子串...]   （不给会话 id = 扫全库）",
+   "tags": [],
+   "sizeKB": 10,
+   "mtime": "2026-09-25"
+  },
+  {
+   "path": "session/sample-sources.mjs",
+   "group": "session",
+   "desc": "// 只读勘察：按 source 分类列出一条样例文本（判断这类注入/消息的语义）。",
+   "usage": "",
+   "tags": [],
+   "sizeKB": 2,
+   "mtime": "2026-09-22"
+  },
+  {
+   "path": "session/scan-sources.mjs",
+   "group": "session",
+   "desc": "// 只读勘察：统计所有 dsh 会话里 user/message 事件的 source.kind / form 分布，",
+   "usage": "",
+   "tags": [],
+   "sizeKB": 2,
+   "mtime": "2026-09-22"
+  },
+  {
+   "path": "session/turn-summary.mjs",
+   "group": "session",
+   "desc": "按 turn 汇总一个会话的结构：步数 / 每步的 assistant 内容块类型 / 是否有 meow prompt / 进站消息 / 结束原因。",
+   "usage": "",
+   "tags": [],
+   "sizeKB": 4,
+   "mtime": "2026-09-25"
+  },
+  {
+   "path": "session/zstd-session.mjs",
+   "group": "session",
+   "desc": "// 只读勘察：dsh 会话 jsonl.zstd 是多帧拼接，逐帧解压后按关键词切片打印。",
+   "usage": "node zstd-session.mjs <session.vN.jsonl.zstd> <关键词> [前后行数] [每行截断]",
+   "tags": [],
+   "sizeKB": 2,
+   "mtime": "2026-09-25"
+  },
+  {
+   "path": "tools/lib-cdp.mjs",
+   "group": "tools",
+   "desc": "极简 CDP 客户端（Node ≥22 自带全局 WebSocket，无需依赖）。",
+   "usage": "const cdp = await connectPage(9222);            // 找 type=page 的 target",
+   "tags": [],
+   "sizeKB": 6,
+   "mtime": "2026-09-12"
+  },
+  {
+   "path": "tools/page-shot.mjs",
+   "group": "tools",
+   "desc": "// page-shot.mjs —— 无头浏览器「截图 + 采集页面错误 + 跑断言」。",
+   "usage": "node page-shot.mjs --url <file:///… 或 http://…> --out <png 路径>",
+   "tags": [],
+   "sizeKB": 7,
+   "mtime": "2026-09-25"
+  }
+ ]
+}

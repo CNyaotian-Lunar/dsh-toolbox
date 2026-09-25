@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="900" viewBox="0 0 1240 900" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', 'PingFang SC', sans-serif">
+  <defs>
+    <marker id="arw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#58a6ff"/>
+    </marker>
+    <marker id="arw2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8b949e"/>
+    </marker>
+  </defs>
+  <rect width="1240" height="900" fill="#0d1117"/>
+
+  <text x="48" y="58" font-size="27" font-weight="600" fill="#e6edf3">DSH 工具箱 · 能力地图</text>
+  <text x="48" y="86" font-size="13.5" fill="#8b949e">读 DSH 会话日志 / 维护 meow-memory 记忆库的常驻脚本集 · 全部 Node ESM · 只依赖标准库与本机已有依赖</text>
+  <line x1="48" y1="106" x2="1192" y2="106" stroke="#21262d"/>
+
+  <text x="48"  y="140" font-size="14" font-weight="600" fill="#58a6ff" letter-spacing="1">数据源</text>
+  <text x="396" y="140" font-size="14" font-weight="600" fill="#58a6ff" letter-spacing="1">工具模块</text>
+  <text x="914" y="140" font-size="14" font-weight="600" fill="#58a6ff" letter-spacing="1">产出</text>
+
+  <g>
+    <rect x="48" y="158" width="300" height="76" rx="9" fill="#161b22" stroke="#30363d"/>
+    <text x="68" y="188" font-size="15.5" font-weight="600" fill="#e6edf3">dsh 会话日志</text>
+    <text x="68" y="211" font-size="12.5" fill="#8b949e">session.vN.jsonl.zstd（append 多帧）</text>
+
+    <rect x="48" y="252" width="300" height="76" rx="9" fill="#161b22" stroke="#30363d"/>
+    <text x="68" y="282" font-size="15.5" font-weight="600" fill="#e6edf3">记忆库</text>
+    <text x="68" y="305" font-size="12.5" fill="#8b949e">&lt;工作区&gt;\.dsh-meow\memory.db（七层表）</text>
+
+    <rect x="48" y="346" width="300" height="76" rx="9" fill="#161b22" stroke="#30363d"/>
+    <text x="68" y="376" font-size="15.5" font-weight="600" fill="#e6edf3">整理留痕与窗口表</text>
+    <text x="68" y="399" font-size="12.5" fill="#8b949e">dream_log / windows（何时整理过什么）</text>
+  </g>
+  <line x1="348" y1="384" x2="392" y2="384" stroke="#58a6ff" stroke-width="2" marker-end="url(#arw)"/>
+  <line x1="866" y1="384" x2="910" y2="384" stroke="#8b949e" stroke-width="1.6" marker-end="url(#arw2)"/>
+
+  <g>
+    <rect x="396" y="158" width="470" height="84" rx="9" fill="#161b22" stroke="#30363d"/>
+    <text x="416" y="187" font-size="15.5" font-weight="600" fill="#e6edf3">session\ · 读会话日志</text>
+    <text x="416" y="210" font-size="12.5" fill="#8b949e">列会话 / 关键词切片 / turn 结构 / source 分布 / 折叠反事实</text>
+    <text x="416" y="231" font-size="12.5" fill="#8b949e">🩸 按魔数 28 B5 2F FD 切帧再解（直接解只得到第一帧）</text>
+
+    <rect x="396" y="254" width="470" height="84" rx="9" fill="#161b22" stroke="#30363d"/>
+    <text x="416" y="283" font-size="15.5" font-weight="600" fill="#e6edf3">memory\ · 记忆库工具</text>
+    <text x="416" y="306" font-size="12.5" fill="#8b949e">分层统计 / 长度分布 / 列出与导出 md / 一致性备份</text>
+    <text x="416" y="327" font-size="12.5" fill="#8b949e">深色浏览页 / 前后对比 / 批量归档与改写（含 undo）</text>
+
+    <rect x="396" y="350" width="470" height="84" rx="9" fill="#161b22" stroke="#30363d"/>
+    <text x="416" y="379" font-size="15.5" font-weight="600" fill="#e6edf3">memory\analysis\ · 整理与分析</text>
+    <text x="416" y="402" font-size="12.5" fill="#8b949e">聚类 / 报告验真（数字必须能对上原始输出）</text>
+    <text x="416" y="423" font-size="12.5" fill="#8b949e">地图生成（记忆分布可视化）</text>
+
+    <rect x="396" y="446" width="470" height="84" rx="9" fill="#161b22" stroke="#30363d"/>
+    <text x="416" y="475" font-size="15.5" font-weight="600" fill="#e6edf3">render\ · 渲染</text>
+    <text x="416" y="498" font-size="12.5" fill="#8b949e">SVG 校验 / 网格合成 / svg2png</text>
+    <text x="416" y="519" font-size="12.5" fill="#8b949e">（本次这些架构图就是靠这套流程自审的）</text>
+
+    <rect x="396" y="542" width="470" height="84" rx="9" fill="#161b22" stroke="#30363d"/>
+    <text x="416" y="571" font-size="15.5" font-weight="600" fill="#e6edf3">tools\ + build-index.mjs</text>
+    <text x="416" y="594" font-size="12.5" fill="#8b949e">CDP 截图（lib-cdp / page-shot）</text>
+    <text x="416" y="615" font-size="12.5" fill="#8b949e">扫描各脚本自动生成 index.json 与 INDEX.md 能力索引</text>
+  </g>
+
+  <g>
+    <rect x="914" y="158" width="278" height="76" rx="9" fill="#161b22" stroke="#30363d"/>
+    <text x="934" y="188" font-size="15.5" font-weight="600" fill="#e6edf3">能力索引</text>
+    <text x="934" y="211" font-size="12.5" fill="#8b949e">INDEX.md / index.json（自动生成）</text>
+
+    <rect x="914" y="252" width="278" height="76" rx="9" fill="#161b22" stroke="#30363d"/>
+    <text x="934" y="282" font-size="15.5" font-weight="600" fill="#e6edf3">深色浏览页</text>
+    <text x="934" y="305" font-size="12.5" fill="#8b949e">记忆库分层浏览（黑底白字）</text>
+
+    <rect x="914" y="346" width="278" height="76" rx="9" fill="#161b22" stroke="#30363d"/>
+    <text x="934" y="376" font-size="15.5" font-weight="600" fill="#e6edf3">报告与图</text>
+    <text x="934" y="399" font-size="12.5" fill="#8b949e">体检报告 / 前后对比 / PNG 截图</text>
+  </g>
+
+  <rect x="48" y="650" width="1144" height="212" rx="10" fill="#0f141b" stroke="#21262d"/>
+  <text x="72" y="684" font-size="14" font-weight="600" fill="#58a6ff" letter-spacing="1">为什么有这个东西</text>
+
+  <circle cx="80" cy="716" r="4" fill="#58a6ff"/>
+  <text x="96" y="721" font-size="13" fill="#c9d1d9">以前每遇到同类活（读会话日志、体检记忆库、导出浏览页）都要重写一遍，还容易重新踩同样的坑。</text>
+
+  <circle cx="80" cy="750" r="4" fill="#58a6ff"/>
+  <text x="96" y="755" font-size="13" fill="#c9d1d9">例：「zstdDecompressSync 只解第一帧」这件事被踩过 4 次 —— 收进这里之后，脚本里已经按魔数切帧处理好了。</text>
+
+  <circle cx="80" cy="784" r="4" fill="#58a6ff"/>
+  <text x="96" y="789" font-size="13" fill="#c9d1d9">收录约定：写完还会复用的脚本收进对应子目录，并在 README 的表里补一行 —— 下次先来这儿找，没有再写。</text>
+
+  <circle cx="80" cy="818" r="4" fill="#58a6ff"/>
+  <text x="96" y="823" font-size="13" fill="#c9d1d9">改库的三条硬规矩写在 README 里（备份先行 / 可 undo / 动前先看清），这些脚本都遵守。</text>
+</svg>
